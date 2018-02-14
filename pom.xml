@@ -9,18 +9,18 @@
     <version>2.33</version>
     <relativePath/>
   </parent>
-  <groupId>io.codeclou.jenkins.github.webhook.notifier.plugin</groupId>
-  <artifactId>github-webhook-notifier-plugin</artifactId>
+  <groupId>io.codeclou.jenkins.github.webhook.build.trigger.plugin</groupId>
+  <artifactId>github-webhook-build-trigger-plugin</artifactId>
   <version>1.2.0</version>
   <packaging>hpi</packaging>
 
-  <name>github-webhook-notifier-plugin</name>
-  <description>github-webhook-notifier-plugin</description>
-  <url>https://github.com/codeclou/jenkins-github-webhook-notifier-plugin</url>
+  <name>github-webhook-build-trigger-plugin</name>
+  <description>github-webhook-build-trigger-plugin</description>
+  <url>https://github.com/codeclou/jenkins-github-webhook-build-trigger-plugin</url>
   <licenses>
     <license>
       <name>MIT License</name>
-      <url>https://github.com/codeclou/jenkins-github-webhook-notifier-plugin/blob/master/LICENSE</url>
+      <url>https://github.com/codeclou/jenkins-github-webhook-build-trigger-plugin/blob/master/LICENSE</url>
     </license>
   </licenses>
   <repositories>
