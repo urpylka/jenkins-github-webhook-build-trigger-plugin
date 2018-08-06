@@ -1,12 +1,12 @@
-[![](https://codeclou.github.io/jenkins-github-webhook-build-trigger-plugin/img/logo.png)](https://github.com/codeclou/jenkins-github-webhook-build-trigger-plugin)
+# GithubWebhookBuildTrigger for Jenkins
 
 Trigger Jenkins Jobs via GitHub Webhooks and provide Webhook Payload Information as Environment Variables inside your Job.
 
-:sparkles: Download: [`github-webhook-notifier-plugin-1.2.0.hpi.zip`](https://github.com/codeclou/jenkins-github-webhook-build-trigger-plugin/releases/download/1.2.0/github-webhook-notifier-plugin-1.2.0.hpi.zip)
+## TODO
 
------
-
-&nbsp;
+* Переписать описание (удалить все ненужное)
+* Заменить лицензию
+* Изменить везде копирайты и версии
 
 ### Is this for me?
 
@@ -26,10 +26,6 @@ If you can agree with all statements, then this is for you.
 
 Ok. Still here?! Then this might be for you :bowtie:
 
------
-
-&nbsp;
-
 ### How it works in three sentences and one picture
 
   * Plugin REST Endpoint parses the actual GitHub Webhook JSON Payload and extracts its information.
@@ -37,10 +33,6 @@ Ok. Still here?! Then this might be for you :bowtie:
   * Lastly it injects Environment Variables into the job run for you to determine what branch and revision is to clone.
 
 ![](https://codeclou.github.io/jenkins-github-webhook-build-trigger-plugin/img/webhook-payload---with-overlays.png?v2)
-
------
-
-&nbsp;
 
 ### GitHub Webhook Configuration
 
@@ -59,11 +51,6 @@ This is how you need to configure the GitHub Webhook in your repository 'Setting
 
 <p align="center"><img src="https://codeclou.github.io/jenkins-github-webhook-build-trigger-plugin/img/github-webhook-settings---with-overlays.png?v4" width="80%"></p>
 
-
------
-
-&nbsp;
-
 ### Jenkins Global Configuration
 
 You can configure the **Webhook Secret** Globally via 'Manage Jenkins' → 'Configure System' → 'Github Webhook Notifier Plugin'. If you do not configure it, HTTP 500 will be the response from the API.
@@ -74,11 +61,6 @@ You can configure the **Webhook Secret** Globally via 'Manage Jenkins' → 'Conf
 
 Concerning 'Manage Jenkins' → **'Configure Global Security'**, 'Prevent Cross Site Request Forgery exploits' can be enabled (the plugin will still work).
 When using matrix-based security 'Anonymous' needs 'Job' → `build,discover,read` permissions.
-
-
------
-
-&nbsp;
 
 ### Jenkins Job Configuration
 
@@ -93,12 +75,10 @@ magically by convention over configuration.
 
 <p align="center"><img src="https://codeclou.github.io/jenkins-github-webhook-build-trigger-plugin/img/jenkins-job-config---with-overlays.png?v2" width="80%"></p>
 
-&nbsp;
-
 **Available Environment Variables from Webhook**
 
 | Variable | Description | Example |
-|----------|-------------|---------|
+||---|----|
 | `$GWBT_COMMIT_BEFORE` | `before` commit id as sha1 hash from Webhook Payload, specifying the commit revision the repository was in before the event happened.  | `3be1cb4b6b86533b5dab2b0083fa9fb8b401b430` or <br> `0000000000000000000` if push event was a tag |
 | `$GWBT_COMMIT_AFTER` | `after` commit id as sha1 hash from Webhook Payload, specifying the commit revision the repository is now in. Meaning the current revision. | `2c9522c9618864808eaaede8353dbeafb996c605` |
 | `$GWBT_REF` | `ref` from Webhook Payload representing the branch or tag that was pushed | `refs/heads/{branchname}` or <br> `refs/tags/{tagname}` |
@@ -108,9 +88,6 @@ magically by convention over configuration.
 | `$GWBT_REPO_HTML_URL` |  GitHub repository browser url. |   `https://github.com/{repoOwner}/{repoName}` <br> e.g. `https://github.com/codeclou/jenkins-github-webhook-build-trigger-plugin` |
 | `$GWBT_REPO_FULL_NAME` | GitHub repository full name | `{repoOwner}/{repoName}` <br> e.g. `codeclou/jenkins-github-webhook-build-trigger-plugin` |
 | `$GWBT_REPO_NAME` | GitHub repository full name |  `{repoName}` <br> e.g. `jenkins-github-webhook-build-trigger-plugin` |
-
-
-&nbsp;
 
 **Example Build Script Snippet**
 
@@ -145,7 +122,6 @@ then
     exit 1
 fi
 
-
 #
 # Only Build Branches
 #
@@ -175,9 +151,6 @@ git reset --hard $GWBT_COMMIT_AFTER
 bash jenkins.sh
 ```
 
-
-&nbsp;
-
 **Example Build Script Snippet for Cloning Private Repositories**
 
 It is best to use [Personal Access Tokens](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/). 
@@ -194,8 +167,6 @@ git clone --single-branch \
           https://${GITHUB_AUTH_TOKEN}@github.com/${GWBT_REPO_FULL_NAME}.git \
           source
 ```
-
-&nbsp;
 
 **Usage with Pipeline Jobs**
 
@@ -226,21 +197,11 @@ node {
 }
 ```
 
------
-
-&nbsp;
-
 ### Jenkins Job Example Triggered by Webhook Push
 
 This is how it looks, when a Job gets triggered by a GitHub Webhook push.
  
 <p align="center"><img src="https://codeclou.github.io/jenkins-github-webhook-build-trigger-plugin/img/job-triggered---with-overlay.png" width="80%"></p>
-
-&nbsp;
-
------
-
-&nbsp;
 
 ### Appendix
 
@@ -259,11 +220,6 @@ mvn hpi:hpi
 Now you should have a file called `./target/github-webhook-notifier-plugin.hpi` which
 you can upload manually to Jenkins under 'Manage Plugins' → 'Advanced' → 'Upload Plugin'.
 
-
-&nbsp;
-
-&nbsp;
-
 **What's the story behind it?**
 
 I needed something that forcefully triggers my Jenkins Jobs by passing the actual git revision and branch or tag information.
@@ -279,14 +235,6 @@ Until further commits happen, the `master` branch has the same revision as the `
 But **I want tag pushes to trigger a build anyway**. And since I hate 'API-wrappers' of stuff,
 I decided to create a single purpose tool that just passes the information of the webhook payload
 through to the job. And it is the jobs logic that can now decide what to do.
-
-
-&nbsp;
-
-
------
-
-&nbsp;
 
 ### License
 
